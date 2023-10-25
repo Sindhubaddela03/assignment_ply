@@ -1,0 +1,108 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> FOR LPAREN ID SEMI ID SEMI ID RPAREN LBRACE RBRACE
+
+Terminals, with rules where they appear
+
+FOR                  : 1
+ID                   : 1 1 1
+LBRACE               : 1
+LPAREN               : 1
+RBRACE               : 1
+RPAREN               : 1
+SEMI                 : 1 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . FOR LPAREN ID SEMI ID SEMI ID RPAREN LBRACE RBRACE
+
+    FOR             shift and go to state 2
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> FOR . LPAREN ID SEMI ID SEMI ID RPAREN LBRACE RBRACE
+
+    LPAREN          shift and go to state 3
+
+
+state 3
+
+    (1) statement -> FOR LPAREN . ID SEMI ID SEMI ID RPAREN LBRACE RBRACE
+
+    ID              shift and go to state 4
+
+
+state 4
+
+    (1) statement -> FOR LPAREN ID . SEMI ID SEMI ID RPAREN LBRACE RBRACE
+
+    SEMI            shift and go to state 5
+
+
+state 5
+
+    (1) statement -> FOR LPAREN ID SEMI . ID SEMI ID RPAREN LBRACE RBRACE
+
+    ID              shift and go to state 6
+
+
+state 6
+
+    (1) statement -> FOR LPAREN ID SEMI ID . SEMI ID RPAREN LBRACE RBRACE
+
+    SEMI            shift and go to state 7
+
+
+state 7
+
+    (1) statement -> FOR LPAREN ID SEMI ID SEMI . ID RPAREN LBRACE RBRACE
+
+    ID              shift and go to state 8
+
+
+state 8
+
+    (1) statement -> FOR LPAREN ID SEMI ID SEMI ID . RPAREN LBRACE RBRACE
+
+    RPAREN          shift and go to state 9
+
+
+state 9
+
+    (1) statement -> FOR LPAREN ID SEMI ID SEMI ID RPAREN . LBRACE RBRACE
+
+    LBRACE          shift and go to state 10
+
+
+state 10
+
+    (1) statement -> FOR LPAREN ID SEMI ID SEMI ID RPAREN LBRACE . RBRACE
+
+    RBRACE          shift and go to state 11
+
+
+state 11
+
+    (1) statement -> FOR LPAREN ID SEMI ID SEMI ID RPAREN LBRACE RBRACE .
+
+    $end            reduce using rule 1 (statement -> FOR LPAREN ID SEMI ID SEMI ID RPAREN LBRACE RBRACE .)
+
