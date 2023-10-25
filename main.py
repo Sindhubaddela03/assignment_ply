@@ -47,15 +47,19 @@ def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-
+# Reserved words
+reserved = {
+    'for': 'FOR',
+}
 
 # Create the lexer
 lexer = lex.lex()
 
 # Test it out
 data = '''
-for i in range(8):
-   print(i)
+for i = 0 to 10
+    sum = sum + i
+end for
 '''
 
 # Give the lexer some input
@@ -64,3 +68,4 @@ lexer.input(data)
 # Tokenize
 for tok in iter(lexer.token, None):
     print(tok)
+
